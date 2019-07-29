@@ -20,7 +20,7 @@ Finally note that the `Any` may need to be changed in non-English locales. E.g. 
 
 ## Installation
 
-Check for pagackages under [Releases](https://github.com/ffxf/sfb-web-ctrl/releases) and unpack into `extension/sfbctrl` in the SimFeedback directory.
+Check for packages under [Releases](https://github.com/ffxf/sfb-web-ctrl/releases) and unpack into `extension/sfbctrl` in the SimFeedback directory.
 
 ## Usage
 
