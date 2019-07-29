@@ -107,6 +107,10 @@
     <Content Include="images\SimFeedback.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="media\SFB-Ext-WebCtrl.PNG" />
+    <Content Include="media\SFB-Setup-WebCtrl.PNG" />
+    <Content Include="media\SFB-WebCtrl-Browser-Off.PNG" />
+    <Content Include="media\SFB-WebCtrl-Browser-On-Intense20.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
