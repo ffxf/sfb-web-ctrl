@@ -46,12 +46,12 @@ Turning on the `Start` checkbox will boot up the SFX100 systems after a few seco
 
 ### REST API Usage
 
-For example us this command to query for the status of your SFX-100 system:
+For example use this command to query for the status of your SFX-100 system:
 
     curl -d "{}" -H "Content-Type: application/json" -X GET http://127.0.0.1:8080/status
 
 This should yield a response like the following:
-    {"isSFXOn":false,"isConnected":false,"intensityIncrement":0,"lastMessage":"trala"}
+    {"isSFXOn":false,"isConnected":false,"intensityIncrement":0,"lastMessage":"test"}
 
 Or use
 
@@ -67,7 +67,7 @@ The full list of REST-API endpoints is:
 - POST: http://your_ip:port/save - save the current profile configuration
 - GET: http://your_ip:port/status - get status information from SimFeedback
 
-You can also drop the option paramters from the end endpoints with options (start/enable/log) and use a JSON body for the request as follows:
+You can also drop the option paramters from the endpoints with options (i.e. start/enable/log) and use a JSON body for the request instead as in this example to start the SFX-100 system:
 
     curl -d "{\"val\":1, \"message\":\"switching on\"}" -H "Content-Type: application/json" -X POST http://127.0.0.1:8080/start
 
