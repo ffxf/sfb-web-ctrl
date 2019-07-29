@@ -24,14 +24,25 @@ Check for packages under [Releases](https://github.com/ffxf/sfb-web-ctrl/release
 
 ## Usage
 
-Start SimFeedback and click on `Setup`. Enable `Autostart` and `Activated` for the Web Controller plugin.
+Start SimFeedback and click on `Setup`. Enable `Autostart` and `Activated` for the Web Controller plugin as indicated in the following screen shot:
 
-If necessary change to HTTP and Websocket port under `Extensions`.
+![Enable Autostart and Activated in SFB Setup](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/media/SFB-Setup-WebCtrl.PNG)
+
+If necessary change to HTTP and Websocket port under `Extensions` as shown here:
+
+![Modify HTTP and Websocket Port in SFB Extensions](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/media/SFB-Ext-WebCtrl.PNG)
 
 ### Web-UI Usage
 
 Open up a browser and point it to the IP-address enabled under Requirements and using the port number being changed or 
-the defult of `8080`.
+the defult of `8080`. You should see a screen like this here:
+
+![SimFeedback Default Web-UI](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/media/SFB-WebCtrl-Browser-Off.PNG)
+
+Turning on the `Start` checkbox will boot up the SFX100 systems after a few seconds and selecting `20` for the overall intensity setting would yield the following screen:
+
+![SimFeedback Web-UI set to ON and intensity to 20](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/media/SFB-WebCtrl-Browser-On-Intense20.PNG)
+
 
 ### REST API Usage
 
@@ -47,3 +58,21 @@ Or use
     curl -d "{}" -H "Content-Type: application/json" -X POST http://127.0.0.1:8080/start/1
 
 to start your SFX-100 rig with a REST API request.
+
+The full list of REST-API endpoints is:
+
+- POST: http://your_ip:port/start/x - turn on/off SFX-100 with x=1/0
+- POST: http://your_ip:port/enable/x - enable/disable all effects with x=1/0
+- POST: http://your_ip:port/log/x/msg - Log a message to the SimFeedback log file with x as 0=info/1=debuf/2=error logging and msg as the message
+- POST: http://your_ip:port/save - save the current profile configuration
+- GET: http://your_ip:port/status - get status information from SimFeedback
+
+You can also drop the option paramters from the end endpoints with options (start/enable/log) and use a JSON body for the request as follows:
+
+    curl -d "{\"val\":1, \"message\":\"switching on\"}" -H "Content-Type: application/json" -X POST http://127.0.0.1:8080/start
+
+# Knowns Issues
+
+The enable/disable all effects endpoints and web-UI checkbox do not work currently because of a bug in SimFeedback.
+
+Not much care has been taken to catch errors, e.g. when submitting malformatted REST requests.
