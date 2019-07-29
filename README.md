@@ -28,7 +28,7 @@ Start SimFeedback and click on `Setup`. Enable `Autostart` and `Activated` for t
 
 ![Enable Autostart and Activated in SFB Setup](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/media/SFB-Setup-WebCtrl.PNG)
 
-If necessary change to HTTP and Websocket port under `Extensions` as shown here:
+If necessary change the HTTP and Websocket port under `Extensions` as shown here:
 
 ![Modify HTTP and Websocket Port in SFB Extensions](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/media/SFB-Ext-WebCtrl.PNG)
 
