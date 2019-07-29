@@ -1,0 +1,271 @@
+﻿/* Default settings ------------------------------------- */
+html * {
+    font-size: 1em;
+    color: #000;
+    font-family: Arial;
+}
+
+h1 {
+    font-family: Arial;
+    font-size: 1.4em;
+    color: darkgoldenrod;
+}
+
+h2 {
+    font-family: Arial;
+    font-size: 1.2em;
+    color: darkgoldenrod;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+hr {
+    height: 1px;
+    color: blue;
+    background-color: darkgoldenrod;
+    border: none;
+}
+
+.btn {
+    background: url(/images/icons8-save-26.png) no-repeat;
+    cursor: pointer;
+    border: none;
+    width: 26px;
+    height: 26px;
+}
+/* -------------------------------------  */
+
+/* Save button ------------------------------------- */
+.savebtnarea {
+    vertical-align: middle;
+}
+/* -------------------------------------  */
+
+/* Custom radio buttons for loglevel settings ------------------------- */
+.loglevel {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    /* Hide the browser's default radio button */
+    .loglevel input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.loglevel:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.loglevel input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.loglevel input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.loglevel .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+/* -------------------------------------  */
+
+/* Custom checkboxes for on/off and enabled/disabled ---------------------- */
+input[type="checkbox"] {
+    -moz-appearance: None;
+    -webkit-appearance: none;
+    width: 44px;
+    height: 24px;
+    background-image: url(/images/unchecked-shift.png);
+    background-size: 44px 24px;
+    background-position: Center Center;
+    border: none;
+    outline: none;
+    vertical-align: Middle;
+    display: inline-block;
+}
+
+    input[type="checkbox"]:checked {
+        background-image: url(/images/checked-shift.png);
+    }
+/* -------------------------------------  */
+
+/* Elements for overall intensity increment / decrement ------------------------ */
+.increment_group button {
+    font-weight: 300;
+    border: 0px;
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 0.5em 0;
+    width: 10%;
+    background: rgba(162, 235, 95, 0.60);
+    -webkit-transition: .2s;
+}
+
+    .increment_group button:nth-child(2) {
+        margin: 0.2em;
+    }
+
+    .increment_group button:hover {
+        background: rgba(162, 235, 95, 0.80);
+    }
+
+    .increment_group button:active {
+        background: rgba(162, 235, 95, 1.00);
+    }
+
+.increment_group select {
+    font-weight: 300;
+    text-align-last: right;
+    padding: 0.5em 1em 0.5em 1em;
+    direction: rtl;
+    border: 0;
+    margin: 0.5em 0;
+    width: 10%;
+    background: rgba(162, 235, 95, 0.60);
+    -webkit-transition: .2s;
+}
+
+    .increment_group select:hover {
+        background: rgba(162, 235, 95, 0.80);
+    }
+
+    .increment_group select:active {
+        background: rgba(162, 235, 95, 1.0);
+    }
+
+#add:active {
+    -webkit-transform: translateY(-1em);
+}
+
+#subtract:active {
+    -webkit-transform: translateY(1em);
+}
+/* ------------------------------------- */
+
+/* Led indicators for on/off and connected/disconnected -------------------------- */
+.green {
+    background-image: -webkit-linear-gradient(top, #13fB04 0%, #58e343 50%, #ADED99 100%);
+}
+
+.red {
+    background-image: -webkit-linear-gradient(top, #fb1304 0%, #e35843 50%, #edad99 100%);
+}
+
+.led {
+    border-radius: 3px;
+    width: 6px;
+    height: 6px;
+    box-shadow: 0px 0px 2px black;
+    margin: 3px;
+    zoom: 3;
+}
+
+    .led:after {
+        display: block;
+        content: '';
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 4px;
+        height: 2px;
+        -webkit-border-top-right-radius: 2px 1px;
+        -webkit-border-top-left-radius: 2px 1px;
+        -webkit-border-bottom-right-radius: 2px 1px;
+        -webkit-border-bottom-left-radius: 2px 1px;
+        background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 100%);
+    }
+/* ------------------------------------- */
+
+/* Grid layout to get checkboxes and texts aligned for on/off and connect/disconnect -------------- */
+.grid-wrapper {
+    width: 400px;
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    grid-template-rows: repeat(2, 20px auto 10%);
+    grid-template-areas: "a b c d" "e f g h";
+    justify-content: flex-start;
+    grid-column-gap: 2px;
+}
+
+/* Certainly not the smartest way to do these one by one but didn't want to dive 
+   much into grid layouts for this purpose */
+.item1 {
+    grid-area: a;
+    width: 80px;
+}
+
+.item2 {
+    grid-area: b;
+    width: 80px;
+}
+
+.item3 {
+    grid-area: c;
+    width: 80px;
+}
+
+.item4 {
+    grid-area: d;
+    width: 160px;
+}
+
+.item5 {
+    grid-area: e;
+    width: 80px;
+}
+
+.item6 {
+    grid-area: f;
+    width: 80px;
+}
+
+.item7 {
+    grid-area: g;
+    width: 80px;
+}
+
+.item8 {
+    grid-area: h;
+    width: 160px;
+}
+/* ------------------------------------- */
+
+

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SFB Controller</title>
+    <link rel="icon" type="image/png" href="/images/SimFeedback.png" />
+    <link rel="shortcut icon" type="image/png" href="/images/SimFeedback.png" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <script type="text/javascript" src="/scripts/button_click.js"></script>
+</head>
+
+<body onload="WebSocketStart()">
+    <h1>SimFeedback Web Controller</h1>
+    <h2>Control your SFX-100 from any browser</h2>
+    <h3><span>Version: 0.1</span></h3>
+
+    <hr />
+  
+    <!-- Start/Stop and Disabe/Enable Checkboxes -->
+    <div class="grid-wrapper">
+        <span class="item1">Stop </span>
+        <input class="item2" type="checkbox" id="start_stop" onclick="StartStopAction()">
+        <span class="item3"> Start</span>
+        <span class="item4">Your SFX-100 Rig</span>
+        <br />
+        <span class="item5">Disable </span>
+        <input class="item6" type="checkbox" id="enable_disable" checked onclick="EnableDisableAction()">
+        <span class="item7"> Enable</span>
+        <span class="item8">All Effects</span>
+    </div>
+
+    <hr />
+
+    <!-- Buttons to change overall intensity -->
+    <div class="increment_group">
+        <label id="incr_label">Change Intensity</label>
+        <br />
+        <button id="subtract" onclick="DecrementAction()">- 1</button>
+        <select id="incr_val" onchange="GetintensityIncrementValue()">
+            <option value="1" selected="selected">1</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+        </select>
+        <button id="add" onclick="IncrementAction()">+ 1</button>
+    </div>
+
+    <hr />
+
+    <!-- Button to save the current profile -->
+    <div class="savebtnarea">
+        Save Current Profile <button id="save" class="btn save" type="submit" onclick="SaveAction()"></button>
+    </div>
+
+    <hr />
+
+    <!-- Elements to set log level and log a message -->
+    <div class="logmsg">
+        <label class="loglevel">
+            Info
+            <input type="radio" checked="checked" name="radio" value="0">
+            <span class="checkmark"></span>
+        </label>
+        <label class="loglevel">
+            Debug
+            <input type="radio" name="radio" value="1">
+            <span class="checkmark"></span>
+        </label>
+        <label class="loglevel">
+            Error
+            <input type="radio" name="radio" value="2">
+            <span class="checkmark"></span>
+        </label>
+        <form action="" method="get">
+            Log message: <input type="text" name="msg" id="log_input"><br>
+            <input type="button" value="Submit" onclick="LogAction()">
+        </form>
+    </div>
+
+    <!-- LED-style indicators for Start/Stop status and game telemetry connection -->
+    <hr />
+    SFX-100 Status <div id="onLed" class="red led"></div>
+    Telemetry Connected <div id="connLed" class="red led"></div>
+    <hr />
+    <form name="hidden">
+        <input type="hidden" id="web_sock_port" name="web_sock_port" value="#web#sock#port#" />
+    </form>
+</body>
+
+</html>
