@@ -145,12 +145,14 @@ namespace SimFeedback.extension.webctrl
             var path = _req.RawUrl;
             var res = e.Response;
 
+            // Check for whether it is a REST-API call and if so handle it
             if (RestAPIResp(path, res))
             {
                 Globals.facade.LogDebug($"GetEvent: handled endpoint '{path}'");
                 return;
             }
 
+            // No REST-API endpoint
             Globals.facade.LogDebug($"GetEvent - no REST endpoint but requested URL to load '{path}'");
             if (path == "/")
                 path += "html/index.html";
