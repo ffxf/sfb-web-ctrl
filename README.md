@@ -6,7 +6,7 @@ Web Controller and REST API for SFX-100 motion rig systems and the SimFeeback so
 
 Requires SimFeedback v0.9 or higher.
 
-You also need to allow for web traffic access on your PC e.g. by using the following command as administrator:
+You also need to allow for web traffic access on your PC e.g. by using the following commands as administrator:
 
     netsh http add urlacl url="http://your_ip:8080/" user="Any"
     netsh http add urlacl url="http://your_ip:8181/" user="Any"
