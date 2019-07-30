@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
+/* Simple Console program to start the SFX-100 system */
 
 namespace SFXRest
 {
