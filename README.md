@@ -48,7 +48,7 @@ Turning on the `Start` checkbox will boot up the SFX100 systems after a few seco
 
 #### Programmatic Examples
 
-The [examples](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/example) folder contains examples in several programming languages.
+The [examples](https://github.com/ffxf/sfb-web-ctrl/tree/master/examples) folder contains examples in several programming languages.
 
 #### Command-Line API Usage
 
