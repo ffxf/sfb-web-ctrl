@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="examples\start.cs" />
     <Compile Include="WebCtrlConfig.cs" />
     <Compile Include="WebCtrlExtension.cs" />
     <Compile Include="WebExtControl.cs">
@@ -104,6 +105,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="examples\start_stop.py" />
+    <None Include="examples\toggle.py" />
     <Content Include="images\SimFeedback.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

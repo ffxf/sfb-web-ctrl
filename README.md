@@ -46,6 +46,12 @@ Turning on the `Start` checkbox will boot up the SFX100 systems after a few seco
 
 ### REST API Usage
 
+#### Programmatic Examples
+
+The [examples](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/example) folder contains examples in several programming languages.
+
+#### Command-Line API Usage
+
 For example use this command to query for the status of your SFX-100 system:
 
     curl -d "{}" -H "Content-Type: application/json" -X GET http://127.0.0.1:8080/status
@@ -58,6 +64,8 @@ Or use
     curl -d "{}" -H "Content-Type: application/json" -X POST http://127.0.0.1:8080/start/1
 
 to start your SFX-100 rig with a REST API request.
+
+# REST-API Definition
 
 The full list of REST-API endpoints is:
 
