@@ -1,6 +1,8 @@
 # SimFeedback Web Controller
 
-Web Controller and REST API for SFX-100 motion rig systems and the SimFeeback software
+Web Controller and REST API for SFX-100 motion rig systems and the SimFeeback software.
+
+See section [Usage][#usage] and inparticular [Web-UI Usage](#web-ui usage) for the Web Controller usage and [REST-API Usage](#rest-api usage) for the usage of the REST-API. Also see the section on [REST-API Definition](#rest-api definition) for more information on the REST-API.
 
 ## Requirements
 
@@ -34,7 +36,7 @@ If necessary change the HTTP and Websocket port under `Extensions` as shown here
 
 ### Web-UI Usage
 
-Open up a browser and point it to the IP-address enabled under Requirements and using the port number being changed or 
+Open up a browser and point it to the IP-address enabled under [Requirements](#requirements) and using the port number being changed or 
 the defult of `8080`. You should see a screen like this here:
 
 ![SimFeedback Default Web-UI](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/media/SFB-WebCtrl-Browser-Off.PNG)
@@ -44,7 +46,7 @@ Turning on the `Start` checkbox will boot up the SFX100 systems after a few seco
 ![SimFeedback Web-UI set to ON and intensity to 20](https://raw.githubusercontent.com/ffxf/sfb-web-ctrl/master/media/SFB-WebCtrl-Browser-On-Intense20.PNG)
 
 
-### REST API Usage
+### REST-API Usage
 
 #### Programmatic Examples
 
@@ -67,17 +69,53 @@ to start your SFX-100 rig with a REST API request.
 
 # REST-API Definition
 
-The full list of REST-API endpoints is:
+## List of API Endpoints
 
-- POST: http://your_ip:port/start/x - turn on/off SFX-100 with x=1/0
-- POST: http://your_ip:port/enable/x - enable/disable all effects with x=1/0
-- POST: http://your_ip:port/log/x/msg - Log a message to the SimFeedback log file with x as 0=info/1=debuf/2=error logging and msg as the message
-- POST: http://your_ip:port/save - save the current profile configuration
-- GET: http://your_ip:port/status - get status information from SimFeedback
+| REST Op  | Endpoint                        | Description                       |
+|:---------|:--------------------------------|:----------------------------------|
+| POST     | http://your_ip:port/start/val   | turn SFX-100 on/off (val = 1/0)     |
+| POST     | http://your_ip:port/enable/val  | enable/disable (vla = 1/0) all effects |
+| POST     | http://your_ip:port/log/val/msg | Log message (msg) to SimFeedback log file with log level val 0=info/1=debuf/2=error |
+| POST     | http://your_ip:port/save        | save the current profile configuration |
+| GET      | http://your_ip:port/status      | get status information from SimFeedback |
 
-You can also drop the option paramters from the endpoints with options (i.e. start/enable/log) and use a JSON body for the request instead as in this example to start the SFX-100 system:
+## Body of POST Operations
+
+If using the above full endpoints the body can kept empty. Even if there was a body the settings for `x` or `msg` in the above endpoints would override the body paramters.
+
+Alternatively you can use the following shortened endpoint
+
+- http://your_ip:port/start
+- http://your_ip:port/enable
+- http://your_ip:port/log
+
+and supply an `application/json` formatted body like the following
+
+    { "val":0, "message":"what I have to say" }
+
+The value of `val` corresponds to the same in the full endpoints and `message` will only be relevant for the log-endpoint where it refers to corresponds to `msg` above. You still can set a value for message for the other endpoints and you will receive it back in the response.
+
+An example for a call using a body is the following:
 
     curl -d "{\"val\":1, \"message\":\"switching on\"}" -H "Content-Type: application/json" -X POST http://127.0.0.1:8080/start
+
+## Response Content
+
+### POST Response
+
+The POST overations will have the following application/json-formatted content
+
+    { "success":sc, "val":val, "message":"msg" }
+
+Where `suc` is either `true` or `false`, `val` is an integer and corresponds to what you have supplied in the POST call, and `msg` is the content of the message string you may have supplied with the POST call.
+
+### GET Response
+
+There is only one GET call currently which is for getting status information. Its response looks as follows
+
+    {"isSFXOn":on, "isConnected":con, "intensityIncrement":val, "lastMessage": "msg"}
+
+with `on` and `con` being booleans describing on/off and connected status, `val` being an integer indicating the last intensity increments that was used (with a default of 1), and `msg` being the content of the last message that was sent via a POST operation (with a default of the empty string).
 
 # Knowns Issues
 
