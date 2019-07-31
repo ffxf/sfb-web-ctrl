@@ -2,7 +2,7 @@
 
 Web Controller and REST API for SFX-100 motion rig systems and the SimFeeback software.
 
-See section [Usage][#usage] and inparticular [Web-UI Usage](#web-ui usage) for the Web Controller usage and [REST-API Usage](#rest-api usage) for the usage of the REST-API. Also see the section on [REST-API Definition](#rest-api definition) for more information on the REST-API.
+See section [Usage](#usage) and inparticular [Web-UI Usage](#web-ui-usage) for the Web Controller usage and [REST-API Usage](#rest-api-usage) for the usage of the REST-API. Also see the section on [REST-API Definition](#rest-api-definition) for more information on the REST-API.
 
 ## Requirements
 
